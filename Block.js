@@ -1,11 +1,17 @@
 class Block {
-    constructor(x, v, m, w, h) {
+    constructor(x, v, m, w, h, colour) {
         this.x = x;
         this.v = v;
         this.m = m;
         this.w = w;
         this.h = h;
         this.y = canvas.height - this.h;
+        this.colour = colour;
+    }
+
+    show() {
+        ctx.fillStyle = this.colour;
+        ctx.fillRect(this.x, this.y, this.w, this.h);
     }
 
     update() {
