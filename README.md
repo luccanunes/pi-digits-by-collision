@@ -1,2 +1,3 @@
-# pi digits by collision
- Calculation pi digits by counting collisions
+# π collisions
+
+ Calculation π digits by counting collisions
