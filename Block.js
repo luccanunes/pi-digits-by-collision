@@ -13,7 +13,7 @@ class Block {
     }
 
     hitWall() {
-        return this.x == -5;
+        return this.x <= 0;
     }
 
     reverseVel() {

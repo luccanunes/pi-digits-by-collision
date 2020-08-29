@@ -1,10 +1,13 @@
 canvas = document.getElementById("gc");
 
-let digits = 1;
-let A = new Block(600, 0, 1, 40, 40);
-let M = Math.pow(200, digits - 1);
-let B = new Block(700, -5, M, 80, 80);
+let digits = 2;
+let timeSteps = 10;
+let A = new Block(400, 0, 1, 40, 40);
+let M = Math.pow(100, digits - 1);
+let B = new Block(800, -3, M, 80, 80);
 let count = 0;
+let div = document.querySelector(".collisions");
+div.innerText = count;
 
 window.onload = function () {
     ctx = canvas.getContext("2d");
@@ -29,17 +32,30 @@ const main = async () => {
     ctx.fillRect(A.x + A.w - 1, A.y, 1, 1);
     ctx.fillRect(B.x + B.w - 1, B.y, 1, 1);
 
-    A.update();
-    B.update();
-
-    if (A.hitWall()) A.reverseVel();
-    if (B.hitWall()) B.reverseVel();
-
-    if (A.x + A.w == B.x + 5 || A.x + 5 == B.x + B.w) {
+    if (A.x + A.w >= B.x || A.x >= B.x + B.w) {
         console.log("collided");
+        count++;
+        div.innerText = count;
         av = A.getNewVel(B);
         bv = B.getNewVel(A);
         A.v = av;
         B.v = bv;
     }
+    if (A.hitWall()) {
+        A.reverseVel();
+        count++;
+        div.innerText = count;
+    }
+    if (B.hitWall()) {
+        B.reverseVel();
+        count++;
+        div.innerText = count;
+    }
+    A.update();
+    B.update();
 };
+
+// function updateCount() {
+//     count++;
+//     div.innerText = count;
+// }
