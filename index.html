@@ -5,14 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>π</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
         .collisions {
             font-size: 100px;
+        }
+        label {
+            font-size: 25px;
+        }
+        .collisions, .data {
+            margin-left: 10px;
         }
     </style>
 </head>
 <body>
     <canvas id="gc" width="1900" height="500"></canvas>
     <div class="collisions"></div>
+
+    <div class="data">
+        <label for="digits">Digits:</label>
+        <input type="number" name="digits" id="digits"> 
+        <br> <br>
+        <label for="vel">Velocity:</label>
+        <input type="number" name="vel" id="vel"> 
+        <br> <br>
+        <label for="timeSteps">Time Steps:</label>
+        <input type="number" name="timeSteps" id="timeSteps"> 
+        <input type="button" value="simulate" onclick="simulate()">
+    </div>
     
     <script src="Block.js"></script>
     <script src="script.js"></script>
